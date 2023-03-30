@@ -19,8 +19,8 @@ public class DataManager {
     private static Connection conn; //DB 커넥션 연결 객체
     
     // db 접속 관련 데이터는 외부 json 파일로 추출하여 관리
-    private static final String USERNAME = "root";//DBMS접속 시 아이디
-    private static final String PASSWORD = "Dmy!bJ{OR!(k@13";//DBMS접속 시 비밀번호
+    private static final String USERNAME = "Your Id";//DBMS접속 시 아이디
+    private static final String PASSWORD = "Your password";//DBMS접속 시 비밀번호
     private static final String URL = "jdbc:mysql://localhost:3306/mainstationdb"; //DBMS접속할 db명
     
     // 싱글턴
