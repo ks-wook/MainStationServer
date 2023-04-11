@@ -1,6 +1,7 @@
 package Server;
 
 
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -8,6 +9,7 @@ import java.net.ServerSocket;
 
 import Data.DataManager;
 import Data.DataManager.*;
+import Data.IpscalConnector;
 import ServerCore.Listener;
 
 public class mainStationServer {
@@ -19,10 +21,31 @@ public class mainStationServer {
 	// Temp
 	public static byte[] updateid;
 	
-	public static void main(String[] args) {		
+	// ----------------------- Test data --------------------------
+	// 모든 데이터를 한번에 담아 보냄
+	static byte[] sendData = new byte[] 
+	{ 
+		-53, -54, -54, -55, -55, -55, -56, -56, -80, -57,
+		-53, -54, -54, -55, -55, -55, -56, -56, -80, -57,
+		-53, -54, -54, -55, -55, -55, -56, -56, -80, -57, // 0 ~ 29 : Rssi raw data
+		5, 0, 10, 8, 0, 10, // 30 ~ 35 : Position data
+		-40, -42, -43 // 36 ~ 38 : Preset data
+	};
+	// ----------------------- Test data --------------------------
+	
+	
+	public static void main(String[] args) throws IOException {		
 		
 		System.out.println("Server on");
 		
+		// Ipscal Test
+		for(int i = 0; i < 10; i++)
+		{
+			IpscalConnector ip = new IpscalConnector();
+			ip.ConnectAndRecvData(sendData);
+		}
+		
+		// Db Test
 		/*
 		// user insert
 		InsertUser insertuser = new InsertUser("테스트유저4", null, null, null, null, null);
@@ -56,7 +79,8 @@ public class mainStationServer {
 		
 
 
-		
+		// server On
+		/*
 		try 
 		{
 			// TCP connection listener
@@ -94,6 +118,7 @@ public class mainStationServer {
 		{
 			System.out.println(e.toString());
 		}
+		*/
 		
 	}
 
